@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e291b02df2fbf284881a669bcf70d43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 0}
+  action: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1001 &365922544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2950,7 +2950,7 @@ MonoBehaviour:
   m_SnapTurn: {fileID: -8525429354371678379, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_Move: {fileID: -8198699208435500284, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_UIScroll: {fileID: -6756787485274679044, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_SmoothMotionEnabled: 0
+  m_SmoothMotionEnabled: 1
   m_SmoothTurnEnabled: 0
   m_NearFarEnableTeleportDuringNearInteraction: 1
   m_UIScrollingEnabled: 1
@@ -3047,6 +3047,7 @@ GameObject:
   - component: {fileID: 1897133648}
   - component: {fileID: 1897133647}
   - component: {fileID: 1897133646}
+  - component: {fileID: 1897133649}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -3157,6 +3158,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1897133649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897133645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a2322e23884e54bad89d4729354828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 1897133647}
+  action: {fileID: 4432886830872468616, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &1945749830
 GameObject:
   m_ObjectHideFlags: 0
@@ -3349,20 +3364,23 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 201
-    m_Alignment: 7
+    m_Alignment: 6
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Play
+  m_Text: 'Controls:
+
+    (L) = Left hand
+
+    (R) = Right hand
 
 
-    Settings
+    (R) A -button
+    = Quit
 
-    Stats
-
-    Quit
+    (R) B -button = Light Switch
 
 '
 --- !u!222 &2080934069
@@ -3488,9 +3506,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 832575519}
   - {fileID: 1945749832}
-  - {fileID: 308025892}
   - {fileID: 1673395583}
   - {fileID: 1897133648}
   - {fileID: 97303670}
   - {fileID: 1440284734}
   - {fileID: 1872206784}
+  - {fileID: 308025892}

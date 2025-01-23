@@ -16,12 +16,6 @@ public class Quit : MonoBehaviour
                 Application.Quit();
             #endif
         };
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+       
     }
 }
