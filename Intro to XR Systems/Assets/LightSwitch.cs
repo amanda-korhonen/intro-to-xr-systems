@@ -18,10 +18,12 @@ public class LightSwitch : MonoBehaviour
 
     private void ChangeColor(InputAction.CallbackContext context)
     {
-        if (lightState) {
+        if (lightState) 
+        {
             light.color = Color.red;
         }
-        else {
+        else 
+        {
             light.color = originalColor;
         }
         // set to true/false depending on the light
