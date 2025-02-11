@@ -45,7 +45,7 @@ public class CustomGrab : MonoBehaviour
             {
                 // Compute deltas for position and rotation
                 Vector3 positionDelta = transform.position - previousPosition;
-                Quaternion rotationDelta = Quaternion.Inverse(previousRotation) * transform.rotation;
+                Quaternion rotationDelta = transform.rotation * Quaternion.Inverse(previousRotation);
 
                 // Syncs the grapped position
                 grabbedObject.position += positionDelta;
@@ -61,20 +61,23 @@ public class CustomGrab : MonoBehaviour
                 // Using both hands
                 if (otherHand.grabbing && otherHand.grabbedObject == grabbedObject) 
                 {
-                    Vector3 handsPositionDelta = 
-                    (positionDelta + otherHand.transform.position - otherHand.previousPosition) / 2f;
+                    Vector3 currentMidpoint = ComputeMidpoint();
+                    Vector3 midpointDelta = currentMidpoint - previousPosition;
+                    //Vector3 combinedPositionDelta = (positionDelta + otherHand.transform.position - otherHand.previousPosition) / 2f;
+                    Quaternion combinedRotationDelta = rotationDelta * Quaternion.Inverse(otherHand.previousRotation) * otherHand.transform.rotation;
 
-                    Quaternion handsRotationDelta =
-                        rotationDelta * Quaternion.Inverse(otherHand.previousRotation) 
-                        * otherHand.transform.rotation;
-                    
-                    grabbedObject.position += handsPositionDelta;
+                    grabbedObject.position += midpointDelta;
 
-                    objectOffset = grabbedObject.position - transform.position;
-                    objectOffset = handsRotationDelta * objectOffset;
-                    grabbedObject.position = transform.position + objectOffset;
+                    // Apply rotation around the midpoint
+                    Vector3 offsetToMidpoint = grabbedObject.position - currentMidpoint;
+                    offsetToMidpoint = combinedRotationDelta * offsetToMidpoint;
+                    grabbedObject.position = currentMidpoint + offsetToMidpoint;
 
-                    grabbedObject.rotation = handsRotationDelta * grabbedObject.rotation;
+                    grabbedObject.rotation = combinedRotationDelta * grabbedObject.rotation;
+                    // Save the midpoint and rotations for next frame
+                    previousPosition = currentMidpoint;
+                    previousRotation = transform.rotation;
+                    return;
                 }
             }
         }
@@ -85,6 +88,10 @@ public class CustomGrab : MonoBehaviour
         // Should save the current position and rotation here
         previousPosition = transform.position;
         previousRotation = transform.rotation;
+    }
+        private Vector3 ComputeMidpoint()
+    {
+        return otherHand != null ? (transform.position + otherHand.transform.position) / 2f : transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
