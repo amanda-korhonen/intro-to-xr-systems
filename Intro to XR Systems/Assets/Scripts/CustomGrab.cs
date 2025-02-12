@@ -55,7 +55,7 @@ public class CustomGrab : MonoBehaviour
                 objectOffset = rotationDelta * objectOffset;
                 grabbedObject.position = transform.position + objectOffset;
 
-                // Syncs the grapped rotation
+                // Apply the rotation to the grabbed object
                 grabbedObject.rotation = rotationDelta * grabbedObject.rotation;
 
                 // Using both hands
