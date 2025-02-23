@@ -3064,7 +3064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 1897133647}
-  action: {fileID: 4432886830872468616, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  action: {fileID: -9217803935522420968, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!4 &2021751640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2835139170107204416, guid: e430022eaa2c59340af3119c722ac3b2, type: 3}

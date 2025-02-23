@@ -887,7 +887,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Activate",
+                    "name": "Activate Primary",
                     "type": "Button",
                     "id": "0c0991c5-d329-4afc-8892-1076b440477c",
                     "expectedControlType": "",
@@ -975,6 +975,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Select1",
+                    "type": "Button",
+                    "id": "4260cf34-6de8-4e65-a5e1-17ddeaea5955",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1095,7 +1104,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Activate",
+                    "action": "Activate Primary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1261,6 +1270,17 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "",
                     "action": "Translate Manipulation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "114322ab-b254-45ff-8e2c-80642d4a4cc8",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1958,7 +1978,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Activate",
+                    "name": "Activate Primary",
                     "type": "Button",
                     "id": "41976d89-60de-4deb-bff9-16b4af96b290",
                     "expectedControlType": "",
@@ -1967,9 +1987,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Activate2",
+                    "name": "Activate Secondary",
                     "type": "Button",
-                    "id": "d56c658b-35cd-4947-a202-70a7ff1eb5c7",
+                    "id": "4c5e34b5-ffce-41dd-b76a-9c5a14cbb7d4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -2175,7 +2195,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Activate",
+                    "action": "Activate Primary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -2351,7 +2371,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Activate2",
+                    "action": "Activate Secondary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
