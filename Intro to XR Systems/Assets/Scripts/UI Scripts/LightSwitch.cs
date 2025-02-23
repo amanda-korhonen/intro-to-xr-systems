@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class LightSwitch : MonoBehaviour
 {  
-    public Light light;
+    public new Light light;
     private Color originalColor;
     private bool lightState = true;
     public InputActionReference action;
