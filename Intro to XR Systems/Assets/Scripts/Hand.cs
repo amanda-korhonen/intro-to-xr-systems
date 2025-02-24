@@ -1,6 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 [RequireComponent(typeof(Animator))]
 public class Hand : MonoBehaviour
@@ -19,6 +18,8 @@ public class Hand : MonoBehaviour
     [SerializeField] private GameObject followObject;
     [SerializeField] private float followSpeed = 30f;
     [SerializeField] private float rotateSpeed = 100f;
+    [SerializeField] private Vector3 positionOffset;
+    [SerializeField] private Vector3 rotationOffset;
     private Transform followTarget;
     private Rigidbody body;
 
@@ -50,11 +51,16 @@ public class Hand : MonoBehaviour
     private void PhysicsMove()
     {
         // Position
-        var distance = Vector3.Distance(followTarget.position, transform.position);
-        body.linearVelocity = (followTarget.position - transform.position).normalized 
+        var positionWithOffset = followTarget.position + positionOffset;
+        var distance = Vector3.Distance(positionWithOffset, transform.position);
+        body.linearVelocity = (positionWithOffset - transform.position).normalized 
         * (followSpeed * distance);
 
         // Rotation
+        var rotationWithOffset = followTarget.rotation * Quaternion.Euler(rotationOffset);
+        var q = rotationWithOffset * Quaternion.Inverse(body.rotation);
+        q.ToAngleAxis(out float angle, out Vector3 axis);
+        body.angularVelocity = axis * (angle * Mathf.Deg2Rad * rotateSpeed);
     }
 
     internal void SetGrip(float v)
@@ -74,6 +80,7 @@ public class Hand : MonoBehaviour
         {
             gripCurrent = Mathf.MoveTowards(gripCurrent, gripTarget, Time.deltaTime * animationSpeed);
             animator.SetFloat(animatorGripParam, gripCurrent);
+            Debug.Log("Grip: " + gripCurrent);
     
         }
 
@@ -81,6 +88,7 @@ public class Hand : MonoBehaviour
         {
             triggerCurrent = Mathf.MoveTowards(triggerCurrent, triggerTarget, Time.deltaTime * animationSpeed);
             animator.SetFloat(animatorTriggerParam, triggerCurrent);
+            Debug.Log("Trigger: " + triggerCurrent);
         }
     }
 }
