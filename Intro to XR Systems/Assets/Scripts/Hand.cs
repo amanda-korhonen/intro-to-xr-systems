@@ -80,7 +80,7 @@ public class Hand : MonoBehaviour
         {
             gripCurrent = Mathf.MoveTowards(gripCurrent, gripTarget, Time.deltaTime * animationSpeed);
             animator.SetFloat(animatorGripParam, gripCurrent);
-            Debug.Log("Grip: " + gripCurrent);
+            //Debug.Log("Grip: " + gripCurrent);
     
         }
 
@@ -88,7 +88,7 @@ public class Hand : MonoBehaviour
         {
             triggerCurrent = Mathf.MoveTowards(triggerCurrent, triggerTarget, Time.deltaTime * animationSpeed);
             animator.SetFloat(animatorTriggerParam, triggerCurrent);
-            Debug.Log("Trigger: " + triggerCurrent);
+            //Debug.Log("Trigger: " + triggerCurrent);
         }
     }
 }
