@@ -23,6 +23,9 @@ public class Hand : MonoBehaviour
     private Transform followTarget;
     private Rigidbody body;
 
+    // Colliders
+    private Collider handCollider;
+    private Collider objectCollider;
     void Start()
     {
         // Animation
@@ -38,6 +41,10 @@ public class Hand : MonoBehaviour
         // Teleport hands
         body.position = followTarget.position;
         body.rotation = followTarget.rotation;
+
+        // Get colliders
+        handCollider = GetComponent<Collider>();
+        objectCollider = followObject.GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -66,6 +73,14 @@ public class Hand : MonoBehaviour
     internal void SetGrip(float v)
     {
         gripTarget = v;
+        if (gripTarget > 0.01f)
+        {
+            Physics.IgnoreCollision(handCollider, objectCollider, true);
+        }
+        else 
+        {
+            Physics.IgnoreCollision(handCollider, objectCollider, false);
+        }
 
     }
 

@@ -8,6 +8,7 @@ TagManager:
   - PlayerHand
   - Left Hand
   - Right Hand
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - MagnifiedObjects
   - Door
   - DoorFrame
-  - 
+  - Interactable
   - 
   - 
   - 
