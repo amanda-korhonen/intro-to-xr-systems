@@ -5,17 +5,18 @@ TagManager:
   serializedVersion: 3
   tags:
   - Grabbable
+  - PlayerHand
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player Hansds
   - Water
   - UI
   - MagnifiedObjects
   - Door
   - DoorFrame
-  - Interactables
+  - 
   - 
   - 
   - 
