@@ -5,31 +5,51 @@ public class TimerController : MonoBehaviour
 {
     [SerializeField] Image timerGraphic;
     [SerializeField] float gameTime;
+    public GameObject timerUI;
     float maxGameTime;
-    bool isTimerRunning = false;
+    bool isTimerRunning = true;
 
     private void Awake() => maxGameTime = gameTime;
 
     // Update is called once per frame
     void Update()
     {
-        if (isTimerRunning)
+        if (!isTimerRunning)
         {
-            gameTime -= Time.deltaTime;
+            return;
+        }
+        UpdateTimer();
+        CheckTimer();
+    }
 
-            var updaterTimerGraphicValue = gameTime / maxGameTime;
+    private void UpdateTimer()
+    {
+        gameTime -= Time.deltaTime;
 
-            timerGraphic.fillAmount = updaterTimerGraphicValue;
-            if (gameTime <= 0)
-            {
-                isTimerRunning = false;
-                gameTime = 0;
-            }
+        var updaterTimerGraphicValue = gameTime / maxGameTime;
+
+        timerGraphic.fillAmount = updaterTimerGraphicValue;
+
+    }
+    private void CheckTimer()
+    {
+        if (timerGraphic.fillAmount <= 0)
+        {
+            //GameOver.GameOverAction();
+            isTimerRunning = false;
+            gameTime = maxGameTime;
         }
     }
+
     public void StartTimer()
     {
-        gameTime = maxGameTime;
-        isTimerRunning = true;
+        timerUI.SetActive(!timerUI.activeSelf);
+
+        if (timerUI.activeSelf)
+        {
+            gameTime = maxGameTime;
+            isTimerRunning = true;
+        }
     }
+
 }

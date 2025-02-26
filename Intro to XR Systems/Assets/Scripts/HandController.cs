@@ -6,6 +6,7 @@ public class HandController : MonoBehaviour
     public InputActionReference gripAction;
     public InputActionReference triggerAction;
     public Hand hand;
+    public Fire fireScript;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,5 +20,10 @@ public class HandController : MonoBehaviour
     {
         hand.SetGrip(gripAction.action.ReadValue<float>());
         hand.SetTrigger(triggerAction.action.ReadValue<float>());
+        
+        if (triggerAction.action.triggered)
+        {
+            fireScript.FireBullet();
+        }
     }
 }
