@@ -8,9 +8,12 @@ public class DummyScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            foreach (GameObject dummies in targetDummies)
+            foreach (GameObject dummy in targetDummies)
             {
-                dummies.GetComponent<TargetDummy>().ActivateDummy();
+                //dummies.GetComponent<TargetDummy>().ActivateDummy();
+                TargetDummy targetDummy = dummy.GetComponent<TargetDummy>();
+                targetDummy.ResetDummy(); // Reset the dummy state
+                targetDummy.ActivateDummy(); // Activate the dummy
             }
         }
     }
